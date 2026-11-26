@@ -328,6 +328,28 @@ class Flow(unittest.TestCase):
         self.assertIn("run `repro` first", out)
 
 
+class SkillSpec(unittest.TestCase):
+    """SKILL.md follows https://agentskills.io/specification."""
+    skill_dir = os.path.join(ROOT, "skills", "flagsmith-incident-triage")
+
+    def test_frontmatter_and_budget(self):
+        text = read(os.path.join(self.skill_dir, "SKILL.md"))
+        self.assertTrue(text.startswith("---\n"))
+        front, body = text[4:].split("\n---\n", 1)
+        meta = dict(line.split(": ", 1) for line in front.splitlines())
+        self.assertLessEqual(set(meta), {"name", "description", "license", "compatibility", "metadata", "allowed-tools"})
+        self.assertRegex(meta["name"], r"^[a-z0-9]+(-[a-z0-9]+)*$")
+        self.assertLessEqual(len(meta["name"]), 64)
+        self.assertEqual(meta["name"], os.path.basename(self.skill_dir))
+        self.assertTrue(0 < len(meta["description"]) <= 1024)
+        self.assertLessEqual(len(meta.get("compatibility", "")), 500)
+        self.assertLess(len(text.splitlines()), 500)
+        self.assertLess(len(body) / 4, 5000, "body should stay well under 5k tokens")
+        for link in re.findall(r"\]\(([^)]+)\)", body):
+            self.assertEqual(link.count("/"), 1, "references stay one level deep: %s" % link)
+            self.assertTrue(os.path.exists(os.path.join(self.skill_dir, link)), link)
+
+
 class Retries(unittest.TestCase):
     def run_with(self, results, write):
         procs = [subprocess.CompletedProcess([], rc, out, err) for rc, out, err in results]
