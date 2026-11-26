@@ -6,6 +6,13 @@ An [Agent Skill](https://agentskills.io/specification) for **Toggle Wars, Track 
 
 **Demo video (104 s, one real unedited run):** <https://janitestkr-collab.github.io/flagsmith-incident-triage/>. The file is also at [docs/demo.mp4](docs/demo.mp4).
 
+| Track 04 criterion | Where to see it |
+|---|---|
+| Completes the whole job | Symptom to verified fix and incident record in one agent run: [docs/demo-run.md](docs/demo-run.md), [incident record](docs/incident-20261126T0341-checkout-v2.md) |
+| Token efficiency | `SKILL.md` is 34 lines (~750 tokens). Each step prints ≤ 25 lines. The whole job took 9 turns and 1,679 output tokens, against 10 turns and 1,930 output tokens for the same agent *without* the skill, which only got as far as a proposal ([token budget](#token-budget)) |
+| Creative use of the CLI | Transient `evaluate --identity --trait` for real and synthesised users; `environment clone` as a throwaway rehearsal stage for every fix *and* its rollback; feature-version history via `flagsmith api`; `flag reorder` to restore override priority |
+| Safety around production changes | Read-only until approval; the approval token is bound to the exact commands; a pre-flight drift check; the rollback is printed before the write and rehearsed on a clone; verification in production ([safety model](#safety-model)) |
+
 ## The problem
 
 "Since 14:05 EU customers get a broken checkout." The usual responses are to flip the whole flag off, which also breaks every user for whom it worked, or to click around the dashboard until the symptom stops. Neither shows what else changed. Segment overrides make this harder than it looks:
