@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>flagsmith-incident-triage · demo</title>
+<style>
+  body { font: 16px/1.5 system-ui, sans-serif; max-width: 980px; margin: 2rem auto; padding: 0 1rem; color: #1b1d22; }
+  video { width: 100%; border-radius: 8px; background: #101218; }
+  code { background: #f0f1f4; padding: 0 .25rem; border-radius: 4px; }
+  table { border-collapse: collapse; margin: 1rem 0; }
+  th, td { border: 1px solid #d5d8de; padding: .35rem .6rem; text-align: left; }
+</style>
+</head>
+<body>
+<h1>flagsmith-incident-triage</h1>
+<p>An <a href="https://agentskills.io/specification">Agent Skill</a> for Toggle Wars, Track 04 (Flagsmith Agent Skills). It traces and kills a broken Flagsmith feature with the smallest blast radius, using the Flagsmith CLI. Every fix and its rollback are rehearsed on throwaway clones of production, and nothing touches production until a human approves.</p>
+<video controls preload="metadata" src="demo.mp4"></video>
+<p>The video shows one real, unedited run: Claude Code (headless, Sonnet) gets only the incident text, uses the skill, stops at the approval gate, and after <em>"Approved"</em> applies and verifies the fix in Flagsmith Cloud.</p>
+<table>
+  <tr><th>Whole job</th><td>9 model turns · 6 tool calls · 1,679 output tokens · 16,237 new input tokens · 301 s · $0.105</td></tr>
+  <tr><th>Rehearsal</th><td>3 clones of Production created and deleted · disable FAIL · delete PASS · kill switch FAIL</td></tr>
+</table>
+<p>Code, README and transcripts: <a href="https://github.com/janitestkr-collab/flagsmith-incident-triage">github.com/janitestkr-collab/flagsmith-incident-triage</a> · <a href="https://github.com/janitestkr-collab/flagsmith-incident-triage/blob/main/docs/demo-run.md">run transcript</a> · <a href="https://github.com/janitestkr-collab/flagsmith-incident-triage/blob/main/docs/no-skill-run.md">same incident without the skill</a></p>
+</body>
+</html>
