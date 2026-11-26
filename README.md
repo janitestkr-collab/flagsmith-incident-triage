@@ -4,6 +4,8 @@ An [Agent Skill](https://agentskills.io/specification) for **Toggle Wars, Track 
 
 > **Trace and kill a broken feature with the smallest blast radius.**
 
+**Demo video (104 s, one real unedited run):** <https://janitestkr-collab.github.io/flagsmith-incident-triage/>. The file is also at [docs/demo.mp4](docs/demo.mp4).
+
 ## The problem
 
 "Since 14:05 EU customers get a broken checkout." The usual responses are to flip the whole flag off, which also breaks every user for whom it worked, or to click around the dashboard until the symptom stops. Neither shows what else changed. Segment overrides make this harder than it looks:
