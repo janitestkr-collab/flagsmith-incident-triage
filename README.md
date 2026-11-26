@@ -162,7 +162,7 @@ python demo/reset.py
 
 Token count is part of the judging, so the skill is built to use few tokens:
 
-- `SKILL.md`: 34 lines, 2,976 characters, about 744 tokens (characters / 4), of which the body after the frontmatter is about 568. The `name` + `description` that agents load at startup is about 110 tokens.
+- `SKILL.md`: 34 lines, 2,999 characters, about 749 tokens (characters / 4), of which the body after the frontmatter is about 574. The `name` + `description` that agents load at startup is about 110 tokens.
 - The agent never reads `triage.py`. Each step prints one block of at most 25 ASCII lines ending in `next:`. State is kept in `.flagsmith-triage.json`, so later steps take no arguments.
 - Reference material (operators, CLI quirks, exit codes) is in `references/flagsmith-notes.md` and loaded only when needed.
 - The 49-line incident record is written to a file and not printed.

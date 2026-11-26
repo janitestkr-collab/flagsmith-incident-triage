@@ -9,7 +9,7 @@ compatibility: Needs the Flagsmith CLI v2 (`flagsmith` on PATH or FLAGSMITH_BIN)
 
 Goal: affected users get what healthy users get; every other user keeps exactly the flags they have now.
 
-`triage` below means `python <this skill's folder>/scripts/triage.py`, run from the user's working directory (state goes to `.flagsmith-triage.json` there). Each step prints a few lines ending in `next:`; follow it. Do not read the script; `triage <step> --help` lists options.
+`triage` below means `python3 <this skill's folder>/scripts/triage.py` (`python` on Windows), run from the user's working directory (state goes to `.flagsmith-triage.json` there). Each step prints a few lines ending in `next:`; follow it. Do not read the script; `triage <step> --help` lists options.
 
 ## Inputs (ask once for anything missing)
 
