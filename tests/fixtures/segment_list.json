@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1204606,
+    "name": "beta-testers",
+    "description": "Opted-in beta testers",
+    "rules": {
+      "$schema": "https://raw.githubusercontent.com/Flagsmith/flagsmith/main/sdk/evaluation-context.json#/$defs/SegmentRule",
+      "type": "ALL",
+      "rules": [
+        {
+          "type": "ANY",
+          "conditions": [
+            {
+              "property": "beta",
+              "operator": "EQUAL",
+              "value": "true"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 1204607,
+    "name": "eu-customers",
+    "description": "Customers in EU launch markets",
+    "rules": {
+      "$schema": "https://raw.githubusercontent.com/Flagsmith/flagsmith/main/sdk/evaluation-context.json#/$defs/SegmentRule",
+      "type": "ALL",
+      "rules": [
+        {
+          "type": "ANY",
+          "conditions": [
+            {
+              "property": "country",
+              "operator": "IN",
+              "value": [
+                "DE",
+                "FR",
+                "ES",
+                "IT",
+                "NL"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 1204608,
+    "name": "enterprise",
+    "description": "Enterprise plan accounts",
+    "rules": {
+      "$schema": "https://raw.githubusercontent.com/Flagsmith/flagsmith/main/sdk/evaluation-context.json#/$defs/SegmentRule",
+      "type": "ALL",
+      "rules": [
+        {
+          "type": "ANY",
+          "conditions": [
+            {
+              "property": "plan",
+              "operator": "EQUAL",
+              "value": "enterprise"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

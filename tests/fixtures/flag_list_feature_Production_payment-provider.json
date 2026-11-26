@@ -1,0 +1,13 @@
+[
+  {
+    "feature": "payment-provider",
+    "type": "standard",
+    "segment": {
+      "id": 1204608,
+      "name": "enterprise"
+    },
+    "priority": 0,
+    "enabled": true,
+    "value": "adyen"
+  }
+]

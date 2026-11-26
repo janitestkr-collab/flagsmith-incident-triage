@@ -1,0 +1,51 @@
+{
+  "count": 4,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "created_at": "2026-11-26T02:10:04.656050Z",
+      "updated_at": "2026-11-26T02:10:04.771698Z",
+      "published": true,
+      "live_from": "2026-11-26T02:10:04.771459Z",
+      "uuid": "00000000-0000-0000-0000-000000000000",
+      "is_live": true,
+      "published_by": null,
+      "created_by": null,
+      "description": null
+    },
+    {
+      "created_at": "2026-11-26T02:09:26.400982Z",
+      "updated_at": "2026-11-26T02:09:26.476668Z",
+      "published": true,
+      "live_from": "2026-11-26T02:09:26.476504Z",
+      "uuid": "00000000-0000-0000-0000-000000000000",
+      "is_live": true,
+      "published_by": null,
+      "created_by": null,
+      "description": null
+    },
+    {
+      "created_at": "2026-11-26T02:08:35.564290Z",
+      "updated_at": "2026-11-26T02:08:35.692192Z",
+      "published": true,
+      "live_from": "2026-11-26T02:08:35.691804Z",
+      "uuid": "00000000-0000-0000-0000-000000000000",
+      "is_live": true,
+      "published_by": null,
+      "created_by": null,
+      "description": null
+    },
+    {
+      "created_at": "2026-11-26T01:57:02.984413Z",
+      "updated_at": "2026-11-26T01:57:02.984422Z",
+      "published": true,
+      "live_from": "2026-11-26T01:57:02.984283Z",
+      "uuid": "00000000-0000-0000-0000-000000000000",
+      "is_live": true,
+      "published_by": null,
+      "created_by": null,
+      "description": null
+    }
+  ]
+}

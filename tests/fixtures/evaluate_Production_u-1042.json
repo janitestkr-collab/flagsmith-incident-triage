@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Flagsmith/flagsmith/main/sdk/evaluation-result.json",
+  "flags": {
+    "checkout-v2": {
+      "name": "checkout-v2",
+      "enabled": true,
+      "value": null,
+      "reason": "TARGETING_MATCH; segment=eu-customers"
+    },
+    "payment-provider": {
+      "name": "payment-provider",
+      "enabled": true,
+      "value": "stripe",
+      "reason": "DEFAULT"
+    },
+    "promo-banner": {
+      "name": "promo-banner",
+      "enabled": true,
+      "value": "Black Friday sale",
+      "reason": "STATIC"
+    },
+    "search-ranking": {
+      "name": "search-ranking",
+      "enabled": true,
+      "value": "bm25",
+      "reason": "DEFAULT"
+    }
+  }
+}

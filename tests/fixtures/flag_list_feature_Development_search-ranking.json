@@ -1,0 +1,13 @@
+[
+  {
+    "feature": "search-ranking",
+    "type": "standard",
+    "segment": {
+      "id": 1204606,
+      "name": "beta-testers"
+    },
+    "priority": 0,
+    "enabled": true,
+    "value": "semantic-v2"
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "feature": "checkout-v2",
+    "type": "standard",
+    "description": "New checkout flow (kill switch)",
+    "enabled": false,
+    "value": null,
+    "segment_overrides": 2,
+    "identity_overrides": 0,
+    "code_references": 0,
+    "lifecycle_stage": "new"
+  },
+  {
+    "feature": "payment-provider",
+    "type": "standard",
+    "description": "Payment provider used at checkout",
+    "enabled": true,
+    "value": "stripe",
+    "segment_overrides": 1,
+    "identity_overrides": 0,
+    "code_references": 0,
+    "lifecycle_stage": "new"
+  },
+  {
+    "feature": "promo-banner",
+    "type": "standard",
+    "description": "Homepage promo banner copy",
+    "enabled": true,
+    "value": "Black Friday sale",
+    "segment_overrides": 0,
+    "identity_overrides": 0,
+    "code_references": 0,
+    "lifecycle_stage": "new"
+  },
+  {
+    "feature": "search-ranking",
+    "type": "standard",
+    "description": "Search ranking algorithm",
+    "enabled": true,
+    "value": "bm25",
+    "segment_overrides": 1,
+    "identity_overrides": 0,
+    "code_references": 0,
+    "lifecycle_stage": "new"
+  }
+]

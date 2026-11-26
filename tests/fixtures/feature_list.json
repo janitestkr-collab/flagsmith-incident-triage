@@ -1,0 +1,34 @@
+[
+  {
+    "id": 304927,
+    "name": "checkout-v2",
+    "description": "New checkout flow (kill switch)",
+    "type": "standard",
+    "default_value": null,
+    "enabled": false
+  },
+  {
+    "id": 304937,
+    "name": "payment-provider",
+    "description": "Payment provider used at checkout",
+    "type": "standard",
+    "default_value": "stripe",
+    "enabled": true
+  },
+  {
+    "id": 304938,
+    "name": "promo-banner",
+    "description": "Homepage promo banner copy",
+    "type": "standard",
+    "default_value": "Black Friday sale",
+    "enabled": true
+  },
+  {
+    "id": 304939,
+    "name": "search-ranking",
+    "description": "Search ranking algorithm",
+    "type": "standard",
+    "default_value": "bm25",
+    "enabled": true
+  }
+]

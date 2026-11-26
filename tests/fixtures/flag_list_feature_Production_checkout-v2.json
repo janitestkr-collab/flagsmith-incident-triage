@@ -1,0 +1,24 @@
+[
+  {
+    "feature": "checkout-v2",
+    "type": "standard",
+    "segment": {
+      "id": 1204607,
+      "name": "eu-customers"
+    },
+    "priority": 0,
+    "enabled": true,
+    "value": null
+  },
+  {
+    "feature": "checkout-v2",
+    "type": "standard",
+    "segment": {
+      "id": 1204606,
+      "name": "beta-testers"
+    },
+    "priority": 1,
+    "enabled": true,
+    "value": null
+  }
+]

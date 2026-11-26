@@ -1,0 +1,42 @@
+[
+  {
+    "id": 120657,
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "name": "Development",
+    "api_key": "DEVELOPMENT_CLIENT_KEY",
+    "description": null,
+    "project": 56410,
+    "minimum_change_request_approvals": null,
+    "allow_client_traits": true,
+    "banner_text": null,
+    "banner_colour": null,
+    "hide_disabled_flags": null,
+    "use_mv_v2_evaluation": true,
+    "use_identity_composite_key_for_hashing": true,
+    "hide_sensitive_data": false,
+    "use_v2_feature_versioning": true,
+    "use_identity_overrides_in_local_eval": true,
+    "is_creating": false,
+    "metadata": []
+  },
+  {
+    "id": 120658,
+    "uuid": "00000000-0000-0000-0000-000000000000",
+    "name": "Production",
+    "api_key": "PRODUCTION_CLIENT_KEY",
+    "description": null,
+    "project": 56410,
+    "minimum_change_request_approvals": null,
+    "allow_client_traits": true,
+    "banner_text": null,
+    "banner_colour": null,
+    "hide_disabled_flags": null,
+    "use_mv_v2_evaluation": true,
+    "use_identity_composite_key_for_hashing": true,
+    "hide_sensitive_data": false,
+    "use_v2_feature_versioning": true,
+    "use_identity_overrides_in_local_eval": true,
+    "is_creating": false,
+    "metadata": []
+  }
+]

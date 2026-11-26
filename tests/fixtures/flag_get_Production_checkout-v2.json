@@ -1,0 +1,11 @@
+{
+  "feature": "checkout-v2",
+  "type": "standard",
+  "description": "New checkout flow (kill switch)",
+  "enabled": false,
+  "value": null,
+  "segment_overrides": 2,
+  "identity_overrides": 0,
+  "code_references": 0,
+  "lifecycle_stage": "new"
+}
