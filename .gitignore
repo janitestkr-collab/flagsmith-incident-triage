@@ -1,0 +1,15 @@
+# triage run artefacts (state may contain user identifiers and traits)
+.flagsmith-triage.json
+.flagsmith-triage.json.tmp
+incident-*.md
+!docs/incident-*.md
+
+# local CLI shims / wrappers (never commit credentials)
+*.cmd
+*.ps1
+.env
+*.dpapi
+
+__pycache__/
+*.pyc
+.venv/
