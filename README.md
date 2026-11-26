@@ -98,7 +98,7 @@ rollback: flagsmith -p toggle-wars-demo -e Production flag update checkout-v2 --
 ran: flagsmith -p toggle-wars-demo -e Production flag delete checkout-v2 --segment eu-customers --yes
 verify @ Production: checkout-v2 -> off for u-1042; everyone else unchanged (u-2001, B1, B2)
 RESULT: PASS
-incident record: F:\ContestWork\scratch\run2\incident-20261126T0304-checkout-v2.md
+incident record: ./incident-20261126T0304-checkout-v2.md
 next: tell the human: culprit, change, verification, rollback command, incident record  [9 CLI calls, 38s]
 ```
 
@@ -181,11 +181,13 @@ Step outputs measured in the final real run above (approximate tokens = characte
 
 Wall times include the credential wrapper (several seconds of PowerShell start-up per call on that laptop). An earlier rehearse on the same laptop under heavy CPU load took 225 s and 40 CLI calls (4 network retries).
 
-Recorded demo run (fill in from the video run):
+Recorded demo run (the one in the video; unedited transcript in [docs/demo-run.md](docs/demo-run.md), incident record in [docs/incident-20261126T0341-checkout-v2.md](docs/incident-20261126T0341-checkout-v2.md)):
 
-| Agent / model | Tool calls | Total tokens | Notes |
-|---|---|---|---|
-| _TBD_ | _TBD_ | _TBD_ | _TBD_ |
+| Agent / model | Model turns | Tool calls | New input tokens | Cache-read tokens | Output tokens | Wall time | Outcome |
+|---|---|---|---|---|---|---|---|
+| Claude Code 2.1.302, Sonnet, headless | 9 (7 to the approval gate + 2 after "Approved") | 6 (Skill, repro, trace, plan, rehearse, apply) | 16,237 | 226,209 | 1,679 | 301 s | fix 2 applied, `RESULT: PASS`, record written |
+
+New input = uncached input + cache writes as reported by Claude Code. Cache reads are mostly Claude Code's own system prompt and tool definitions being re-read on every turn; the skill adds about 750 tokens (`SKILL.md`) plus about 1,000 tokens of step output. At the final turn the whole conversation, from symptom to verified fix, was about 32k tokens of context. Claude Code reported $0.105 for the session.
 
 ## How Flagsmith is used
 
