@@ -136,6 +136,8 @@ The skill is the folder `skills/flagsmith-incident-triage/` (`SKILL.md`, `script
 
 ## Quickstart with the demo project
 
+The seed creates one project, `toggle-wars-demo`. On Flagsmith Cloud's free plan an organisation can hold only one project, so run it in an organisation with a free project slot (a new free organisation, a trial, or a self-hosted instance via `FLAGSMITH_API_URL`).
+
 ```bash
 export FLAGSMITH_API_KEY=...            # organisation API key (never commit it)
 python demo/seed.py                     # idempotent: creates project toggle-wars-demo and the incident
