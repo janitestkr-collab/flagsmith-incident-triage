@@ -187,6 +187,15 @@ Recorded demo run (the one in the video; unedited transcript in [docs/demo-run.m
 |---|---|---|---|---|---|---|---|
 | Claude Code 2.1.302, Sonnet, headless | 9 (7 to the approval gate + 2 after "Approved") | 6 (Skill, repro, trace, plan, rehearse, apply) | 16,237 | 226,209 | 1,679 | 301 s | fix 2 applied, `RESULT: PASS`, record written |
 
+**Same agent, same incident, without the skill** (unedited transcript in [docs/no-skill-run.md](docs/no-skill-run.md)). Compare it with phase 1 above, which ends at the same point: a proposal waiting for a human.
+
+| Run (to the point of proposing a fix) | Model turns | Cache-read tokens | Output tokens | What it proposed |
+|---|---|---|---|---|
+| With `flagsmith-incident-triage` | 7 | 163,285 | 1,250 | Delete the `eu-customers` override. It was rehearsed on clones against EU beta testers and other bystanders, and its rollback was rehearsed too. "Disable" was rejected because it breaks EU beta testers. |
+| Without the skill | 10 | 289,342 | 1,930 | "Remove or disable" the override, treated as equivalent. It never checked beta testers, said the CLI had no segment-override command, and planned a raw `flagsmith api` call. |
+
+With the skill the agent used 30% fewer turns, 44% fewer cache-read tokens and 35% fewer output tokens before its proposal. It then went on to apply, verify and record the fix in 2 more turns.
+
 New input = uncached input + cache writes as reported by Claude Code. Cache reads are mostly Claude Code's own system prompt and tool definitions being re-read on every turn; the skill adds about 750 tokens (`SKILL.md`) plus about 1,000 tokens of step output. At the final turn the whole conversation, from symptom to verified fix, was about 32k tokens of context. Claude Code reported $0.105 for the session.
 
 ## How Flagsmith is used
