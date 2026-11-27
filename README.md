@@ -265,7 +265,7 @@ The tests run offline. `tests/fake_cli.py` stands in for the CLI and is seeded f
 
 ## AI assistance
 
-This skill, its scripts, tests and this README were written with AI coding assistants (Claude Code). The Toggle Wars rules allow this. All results shown above come from real runs against Flagsmith Cloud.
+This project was built by an AI agent. Claude Code (Anthropic) ran on the entrant's own computer under the entrant's accounts and standing instructions. It planned and wrote the skill, its scripts, tests, demo tooling and this README, ran the tests, and recorded the demo run. The entrant set the goal, provided the accounts and delegated the build and the submission to the agent. The Toggle Wars rules allow AI assistance. All results shown above come from real runs against Flagsmith Cloud.
 
 ## License
 
