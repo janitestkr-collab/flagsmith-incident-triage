@@ -6,9 +6,25 @@ An [Agent Skill](https://agentskills.io/specification) for **Toggle Wars, Track 
 
 **Demo video (104 s, one real unedited run):** <https://janitestkr-collab.github.io/flagsmith-incident-triage/>. The file is also at [docs/demo.mp4](docs/demo.mp4).
 
+**Try it without a Flagsmith account** (a mock replay that needs only Python 3.9+ and no network):
+
+```bash
+python demo/replay.py
+```
+
+It replays the recorded real run offline. `triage.py` runs unchanged, but a fake CLI ([tests/fake_cli.py](tests/fake_cli.py)) answers every call with JSON captured from the real Flagsmith CLI. It prints all seven steps, from symptom to incident record, and its first line says that it is a mock. Its step output matches the [real run below](#real-run-against-flagsmith-cloud-demo-project-production), including the verdicts, the approval token and the CLI-call counts. The exceptions are the wall times, the `history` line (the fixtures were captured before that run), the record's file name and its timestamps, which come from a mock clock. [docs/WALKTHROUGH.md](docs/WALKTHROUGH.md) maps each step to the code.
+
+| Tokens | Count |
+|---|---|
+| Added by the skill: `SKILL.md` (34 lines) | ~750 |
+| Output of each step | ≤ 25 lines (~1,000 tokens for the whole job) |
+| Recorded demo run: every token Claude Code processed ([per phase](docs/demo-run.md#token-usage-reported-by-claude-code)) | 244,125 |
+| &nbsp;&nbsp;of which cache reads: Claude Code re-reading its cached prompt on each of 9 turns, mostly its own system prompt and tool definitions | 226,209 |
+| &nbsp;&nbsp;of which new input / output | 16,237 / 1,679 |
+
 | Track 04 criterion | Where to see it |
 |---|---|
-| Completes the whole job | Symptom to verified fix and incident record in one agent run: [docs/demo-run.md](docs/demo-run.md), [incident record](docs/incident-20261126T0341-checkout-v2.md) |
+| Completes the whole job | Symptom to verified fix and incident record in one agent run: [docs/demo-run.md](docs/demo-run.md), [incident record](docs/incident-20261126T0341-checkout-v2.md). Offline replay of the same job: `python demo/replay.py` |
 | Token efficiency | `SKILL.md` is 34 lines (~750 tokens). Each step prints ≤ 25 lines. The whole job took 9 turns and 1,679 output tokens, against 10 turns and 1,930 output tokens for the same agent *without* the skill, which only got as far as a proposal ([token budget](#token-budget)) |
 | Creative use of the CLI | Transient `evaluate --identity --trait` for real and synthesised users; `environment clone` as a throwaway rehearsal stage for every fix *and* its rollback; feature-version history via `flagsmith api`; `flag reorder` to restore override priority |
 | Safety around production changes | Read-only until approval; the approval token is bound to the exact commands; a pre-flight drift check; the rollback is printed before the write and rehearsed on a clone; verification in production ([safety model](#safety-model)) |
@@ -234,7 +250,9 @@ skills/flagsmith-incident-triage/
   scripts/triage.py             the workflow (stdlib only)
   references/flagsmith-notes.md on-demand details
 demo/seed.py, demo/reset.py     demo project and incident (idempotent, via the CLI)
+demo/replay.py                  offline mock replay of the whole job (fake CLI, no account)
 tests/                          offline unittest suite + fake CLI fed by real captured output
+docs/WALKTHROUGH.md             each step mapped to the functions that implement it
 ```
 
 ## Tests
@@ -254,7 +272,8 @@ The tests run offline. `tests/fake_cli.py` stands in for the CLI and is seeded f
 - retries (reads retry, possibly-sent writes do not);
 - the rule evaluator, checked against real `evaluate` results;
 - the seed's converge logic;
-- `SKILL.md` against the Agent Skills spec rules (name, description and line limits, one-level references).
+- `SKILL.md` against the Agent Skills spec rules (name, description and line limits, one-level references);
+- the offline replay (`demo/replay.py`): labelled as a mock, never starts a real CLI, and prints the same text on every run.
 
 ## Limitations
 

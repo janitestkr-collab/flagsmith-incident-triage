@@ -392,5 +392,24 @@ class Seed(unittest.TestCase):
                          ["eu-customers", "beta-testers"])
 
 
+class ReplayDemo(unittest.TestCase):
+    def run_demo(self):
+        import replay
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf), \
+                mock.patch.object(triage.subprocess, "run", side_effect=AssertionError("the replay ran a real CLI")):
+            code = replay.main([])
+        return code, buf.getvalue()
+
+    def test_replay_is_offline_labelled_and_repeatable(self):
+        code, out = self.run_demo()
+        self.assertEqual(code, 0, out)
+        self.assertTrue(out.startswith("MOCK DEMO: replays a recorded real run offline."), out[:200])
+        for text in ("== 7/7 record", "2 delete-override   PASS", "REFUSED: apply writes to Production",
+                     "RESULT: PASS", "## Root cause", "writes to Production: 0 before approval, 1 after"):
+            self.assertIn(text, out)
+        self.assertEqual(self.run_demo(), (code, out), "two replays print the same text")
+
+
 if __name__ == "__main__":
     unittest.main()
